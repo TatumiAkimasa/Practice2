@@ -9,7 +9,7 @@ using namespace GameL;
 class CScene_main :public CScene
 {
 public:
-	CScene_main() {};
+	CScene_main() ;
 	~CScene_main();
 	void InitScene();//ゲームメインの初期化メソッド
 	void Scene();//ゲームメインの実行中メソッド
