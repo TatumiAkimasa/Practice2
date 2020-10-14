@@ -152,6 +152,7 @@
     <ClCompile Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\SetWindow.cpp" />
     <ClCompile Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\UserData.cpp" />
     <ClCompile Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\WinInputs.cpp" />
+    <ClCompile Include="Scene_main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\Audio.h" />

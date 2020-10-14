@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\WinInputs.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Scene_main.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\Audio.h">
