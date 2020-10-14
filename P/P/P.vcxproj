@@ -167,6 +167,7 @@
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\SetWindow.h" />
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\UserData.h" />
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\WinInputs.h" />
+    <ClInclude Include="Scene_main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

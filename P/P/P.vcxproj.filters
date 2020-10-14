@@ -95,5 +95,8 @@
     <ClInclude Include="..\..\..\..\..\Desktop\指南書集\指南書1\２Ｄライブラリ\GameL\WinInputs.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_main.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
