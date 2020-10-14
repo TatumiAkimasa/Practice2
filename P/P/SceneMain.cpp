@@ -31,7 +31,12 @@ CSceneMain::~CSceneMain()
 //ゲームメイン初期化メソッド
 void CSceneMain::InitScene()
 {
+	//外部グラフィックファイルを読み込み0番に登録（512*512ピクセル）
+	Draw::LoadImageW(L"メイン　背景.png", 0, TEX_SIZE_512);
 
+	//背景オブジェクト作成
+	CObjBackground* back = new CObjBackground();
+	Objs::InsertObj(back, OBJ_BACK_GROUND, 5);
 }
 
 //ゲーム実行中メソッド

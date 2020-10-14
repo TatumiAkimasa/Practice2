@@ -55,6 +55,9 @@
     <ClInclude Include="GameL\WinInputs.h">
       <Filter>リソースファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ObjBackground.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SceneMain.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="GameL\WinInputs.cpp">
       <Filter>リソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBackground.cpp">
+      <Filter>ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
