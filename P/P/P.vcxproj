@@ -19,35 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameHead.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\Audio.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DirectXDevice.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DrawFont.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DrawTexture.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\HitBoxManager.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\MultiThread.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SceneManager.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SceneObjManager.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SetWindow.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\UserData.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\WinInputs.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\２Ｄライブラリ\main.h" />
+    <ClInclude Include="GameHead.h" />
+    <ClInclude Include="GameL\Audio.h" />
+    <ClInclude Include="GameL\DirectXDevice.h" />
+    <ClInclude Include="GameL\DrawFont.h" />
+    <ClInclude Include="GameL\DrawTexture.h" />
+    <ClInclude Include="GameL\HitBoxManager.h" />
+    <ClInclude Include="GameL\MultiThread.h" />
+    <ClInclude Include="GameL\SceneManager.h" />
+    <ClInclude Include="GameL\SceneObjManager.h" />
+    <ClInclude Include="GameL\SetWindow.h" />
+    <ClInclude Include="GameL\UserData.h" />
+    <ClInclude Include="GameL\WinInputs.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="SceneMain.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\Audio.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DirectXDevice.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\Draw2DTex_Source.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DrawFont.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\DrawTexture.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\GameL_Main.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\HitBoxManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\MultiThread.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SceneManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SceneObjManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\SetWindow.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\UserData.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\２Ｄライブラリ\GameL\WinInputs.cpp" />
+    <ClCompile Include="GameL\Audio.cpp" />
+    <ClCompile Include="GameL\DirectXDevice.cpp" />
+    <ClCompile Include="GameL\Draw2DTex_Source.cpp" />
+    <ClCompile Include="GameL\DrawFont.cpp" />
+    <ClCompile Include="GameL\DrawTexture.cpp" />
+    <ClCompile Include="GameL\GameL_Main.cpp" />
+    <ClCompile Include="GameL\HitBoxManager.cpp" />
+    <ClCompile Include="GameL\MultiThread.cpp" />
+    <ClCompile Include="GameL\SceneManager.cpp" />
+    <ClCompile Include="GameL\SceneObjManager.cpp" />
+    <ClCompile Include="GameL\SetWindow.cpp" />
+    <ClCompile Include="GameL\UserData.cpp" />
+    <ClCompile Include="GameL\WinInputs.cpp" />
     <ClCompile Include="SceneMain.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
