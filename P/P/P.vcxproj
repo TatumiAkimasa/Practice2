@@ -33,7 +33,9 @@
     <ClInclude Include="GameL\WinInputs.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="ObjBackground.h" />
+    <ClInclude Include="ObjResult.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneResult.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp" />
@@ -50,6 +52,8 @@
     <ClCompile Include="GameL\UserData.cpp" />
     <ClCompile Include="GameL\WinInputs.cpp" />
     <ClCompile Include="ObjBackground.cpp" />
+    <ClCompile Include="ObjResult.cpp" />
+    <ClCompile Include="SceneResult.cpp" />
     <ClCompile Include="SceneMain.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

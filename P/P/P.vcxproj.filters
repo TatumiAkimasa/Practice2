@@ -58,6 +58,12 @@
     <ClInclude Include="ObjBackground.h">
       <Filter>ソースファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ObjResult.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneResult.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SceneMain.cpp">
@@ -103,6 +109,12 @@
       <Filter>リソースファイル</Filter>
     </ClCompile>
     <ClCompile Include="ObjBackground.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjResult.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneResult.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
