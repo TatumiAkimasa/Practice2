@@ -35,17 +35,17 @@ void CObjBackground::Draw()
 	//切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 32.0f;
-	src.m_bottom = 32.0f;
+	src.m_right = 500.0f;
+	src.m_bottom = 500.0f;
 
 	//背景①の位置設定し描画
 	dst.m_top = 0.0f;
 	dst.m_left = 0.0f ;
-	dst.m_right = 32.0f ;
-	dst.m_bottom = 32.0f;
+	dst.m_right = 512.0f ;
+	dst.m_bottom = 512.0f;
 
 	//1番目に登録したグラフィックをsrc・dst・cの情報をもとに描画
-	Draw::Draw(1, &src, &dst, c, 0.0f);
+	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 	
 
