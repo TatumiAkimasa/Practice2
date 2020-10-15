@@ -17,7 +17,7 @@ void CObjBackground::Init()
 void CObjBackground::Action()
 {
 	//îwåiá@ÇÃìÆçÏ
-	m_y1 -= 10.0f;
+	//m_y1 -= 10.0f;
 	if (m_y1 < -800.0f)
 		m_y1 = 800;
 
@@ -33,16 +33,16 @@ void CObjBackground::Draw()
 	RECT_F dst;  //ï`âÊêÊï\é¶à íu
 
 	//êÿÇËéÊÇËà íuÇÃê›íË
-	src.m_top = 264.0f;
+	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 512.0f;
-	src.m_bottom = 448.0f;
+	src.m_right = 32.0f;
+	src.m_bottom = 32.0f;
 
 	//îwåiá@ÇÃà íuê›íËÇµï`âÊ
 	dst.m_top = 0.0f;
-	dst.m_left = 0.0f + m_y1;
-	dst.m_right = 800.0f + m_y1;
-	dst.m_bottom = 600.0f;
+	dst.m_left = 0.0f ;
+	dst.m_right = 32.0f ;
+	dst.m_bottom = 32.0f;
 
 	//1î‘ñ⁄Ç…ìoò^ÇµÇΩÉOÉâÉtÉBÉbÉNÇsrcÅEdstÅEcÇÃèÓïÒÇÇ‡Ç∆Ç…ï`âÊ
 	Draw::Draw(1, &src, &dst, c, 0.0f);
