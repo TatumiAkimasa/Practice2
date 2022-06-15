@@ -33,7 +33,8 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		{
 			isShot = true;
 			// íeê∂ê¨
-			//bullet=new bullet(id,pos,vec);
+			base.emplace_back((unique_ptr<Base>)new Bulett(1.0f,1.0f,pos.x,pos.y));
+
 		}
 	}
 	else if (isShot)

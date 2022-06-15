@@ -20,6 +20,8 @@ public:
 	//ヒットポイント
 	int HP{ 5 };
 
+	bool isShot = false;
+
 	//処理
 	int Action(list<unique_ptr<Base>>& base,int NetHandle);
 	//描画
@@ -68,9 +70,9 @@ public:
 	Point pos{ 0,0 };
 	//移動ベクトル
 	Vector vec{ 0,0 };
-	Bulett(int B_ID, float _x, float _y,float x,float y);
+	Bulett(float _x, float _y,float x,float y);
 
-	int Action(list<unique_ptr<Base>>& base);
+	int Action(list<unique_ptr<Base>>& base,int NetHandle);
 
 	void Draw();
 };

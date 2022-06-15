@@ -11,10 +11,11 @@ char str[512]{ "null" };
 int in{ 0 };//データの読み取り、書き込み位置調整用
 int ActionID{ 0 };//アクションID
 
-Bulett::Bulett(int B_ID, float _x, float _y,float x,float y){
+Bulett::Bulett(float _x, float _y,float x,float y){
 	img = LoadGraph("image\\Bulett.png");
 
-	server_ID = B_ID;//サーバーID
+	server_ID = BULETT;
+	
 	vec.x = _x;
 	vec.y = _y;
 
@@ -24,7 +25,7 @@ Bulett::Bulett(int B_ID, float _x, float _y,float x,float y){
 	objID = BULETT;
 }
 
-int Bulett::Action(list<unique_ptr<Base>>& base)
+int Bulett::Action(list<unique_ptr<Base>>& base,int a)
 {
 	pos.x += vec.x;
 	pos.y += vec.y;

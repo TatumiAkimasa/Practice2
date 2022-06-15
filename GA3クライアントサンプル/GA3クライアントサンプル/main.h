@@ -42,6 +42,7 @@ public:
 
 	//ˆ—
 	virtual int Action(list<unique_ptr<Base>>& base,int NetHandle) = 0;
+	
 	//•`‰æ
 	virtual void Draw() = 0;
 };
