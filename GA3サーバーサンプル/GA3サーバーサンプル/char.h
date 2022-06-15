@@ -13,9 +13,12 @@ public:
 	Point pos{ 0,0 };
 	Vector vec{ 0,0 };
 
+	Vector Bulletvec{ 0,0 };
+	int PLID{ 0 };
+
 	int HP{ 5 };
 
-	bool barst=false;
+	bool isShot=false;
 
 	int Action(list<unique_ptr<Base>>& base) { return 0; };
 	void Draw() {};
@@ -23,14 +26,13 @@ public:
 	~Player() { DeleteGraph(img); };
 };
 
-//ふｃきょう
 
+//とりあえずVecだけ設定
 class Bullet :public Base {
 private:
 public:
 	//コンストラクタ
-	//Player();
-
+	
 	
 	Vector vec{ 0,0 };
 
