@@ -11,12 +11,15 @@ char str[512]{ "null" };
 int in{ 0 };//データの読み取り、書き込み位置調整用
 int ActionID{ 0 };//アクションID
 
-Bulett::Bulett(int B_ID, float _x, float _y){
+Bulett::Bulett(int B_ID, float _x, float _y,float x,float y){
 	img = LoadGraph("image\\Bulett.png");
 
 	server_ID = B_ID;//サーバーID
 	vec.x = _x;
 	vec.y = _y;
+
+	pos.x = x;
+	pos.y = y;
 
 	objID = BULETT;
 }
@@ -54,6 +57,22 @@ int Bulett::Action(list<unique_ptr<Base>>& base)
 	}
 
 	//領域外に行ったら消す
+	if (WINDOW_WIDTH < pos.x + 10.0f)
+	{
+		FLAG = false;
+	}
+	else if (0.0f > pos.x - 10.0f)
+	{
+		FLAG = false;
+	}
+	else if (WINDOW_HEIGHT > pos.y + 10.0f)
+	{
+		FLAG = false;
+	}
+	else if (0.0f > pos.y - 10.0f)
+	{
+		FLAG = false;
+	}
 
 	return 0;
 }

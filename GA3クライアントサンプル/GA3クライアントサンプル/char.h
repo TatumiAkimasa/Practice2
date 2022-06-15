@@ -68,7 +68,7 @@ public:
 	Point pos{ 0,0 };
 	//ˆÚ“®ƒxƒNƒgƒ‹
 	Vector vec{ 0,0 };
-	Bulett(int B_ID, float _x, float _y);
+	Bulett(int B_ID, float _x, float _y,float x,float y);
 
 	int Action(list<unique_ptr<Base>>& base);
 
