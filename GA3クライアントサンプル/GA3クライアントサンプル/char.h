@@ -65,6 +65,9 @@ class Bulett :public Base
 {
 private:
 public:
+	int in{ 0 };//データの読み取り、書き込み位置調整用
+
+	int ActionID{ 0 };//アクションID
 
 	//位置
 	Point pos{ 0,0 };

@@ -43,6 +43,9 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	}
 
 
+	//ZÇ≈íeåƒÇ—èoÇ∑
+	//if (CheckHitKey(KEY_INPUT_Z))base.emplace_back((unique_ptr<Base>)new BULETT(pos, BULETT);
+
 	pos.x += vec.x;
 	pos.y += vec.y;
 
