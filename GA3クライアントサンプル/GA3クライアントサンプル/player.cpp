@@ -27,6 +27,20 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_RIGHT)) vec.x = PlayerSpeedX;
 	if (CheckHitKey(KEY_INPUT_DOWN)) vec.y = PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
+	if (CheckHitKey('Z'))
+	{
+		if (isShot)
+		{
+			isShot = true;
+			// íeê∂ê¨
+			//bullet=new bullet(id,pos,vec);
+		}
+	}
+	else if (isShot)
+	{
+		isShot = false;
+	}
+
 
 	pos.x += vec.x;
 	pos.y += vec.y;
@@ -53,4 +67,13 @@ void Player::Draw()
 {
 	DrawGraphF(pos.x, pos.y, img, TRUE);
 	DrawFormatStringF(pos.x, pos.y+64, GetColor(255, 255, 255), "ID=%d", server_ID);
+}
+
+// ÉxÉNÉgÉãÇÃê≥ãKâª
+Vector VecNormalize(Vector vec)
+{
+	vec.x = vec.x / (vec.x * vec.x + vec.y * vec.y);
+	vec.y = vec.y / (vec.x * vec.x + vec.y * vec.y);
+
+	return vec;
 }
