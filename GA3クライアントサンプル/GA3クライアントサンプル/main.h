@@ -26,6 +26,7 @@ typedef struct Vector {
 enum {
 	PLAYER,
 	ANYPLAYER,
+	BULETT,
 };
 
 //ベースクラス

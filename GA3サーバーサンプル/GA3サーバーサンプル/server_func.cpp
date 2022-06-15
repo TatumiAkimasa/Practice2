@@ -35,34 +35,35 @@ int Initial_Connection_Process(list<unique_ptr<Base>>& base, Player_Data* p, int
 		(*p).data[ID].pos.x = 0.0f;
 		(*p).data[ID].pos.y = 0.0f;
 
-		////他のプレイヤーに接続を知らせる
-		//for (int i = 0; i < MAX_CONNECTION; i++) {
-		//	if (i != ID && (*p).NetHandle[i] != -1) {
-		//		in = 0;
-		//		//送信データの作成
-		//		//(ID,srver_ID)
-		//		ActionID = PLAYER_LOGIN;
-		//		memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
-		//		memcpy_s(str + in, sizeof(int), &ID, sizeof(int));
-		//		//データ送信
-		//		NetWorkSend((*p).NetHandle[i], str, sizeof(str));			
-		//	}
-		//}
+		//他のプレイヤーに接続を知らせる
+		for (int i = 0; i < MAX_CONNECTION; i++) {
+			if (i != ID && (*p).NetHandle[i] != -1) {
+				in = 0;
+				//送信データの作成
+				//(ID,srver_ID)
+				ActionID = PLAYER_LOGIN;
+				memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
+				memcpy_s(str + in, sizeof(int), &ID, sizeof(int));
+				//データ送信
+				NetWorkSend((*p).NetHandle[i], str, sizeof(str));			
+			}
+		}
 
-		////他のプレイヤーの情報を送信
-		//for (int i = 0; i < MAX_CONNECTION; i++) {
-		//	if (i != ID && (*p).NetHandle[i] != -1) {
-		//		//送信データの作成
-		//		//(ID,server_ID,位置情報)
-		//		ActionID = MAKE_PLAYER;
-		//		in = 0;
-		//		memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
-		//		memcpy_s(str + in, sizeof(int), &i, sizeof(int)); in += sizeof(int);
-		//		memcpy_s(str + in, sizeof(Point), &(*p).data[i].pos, sizeof(Point));
-		//		//データ送信
-		//		NetWorkSend(GetHandle, str, sizeof(str));
-		//	}
-		//}
+		//他のプレイヤーの情報を送信
+		for (int i = 0; i < MAX_CONNECTION; i++) {
+			if (i != ID && (*p).NetHandle[i] != -1) {
+				//送信データの作成
+				//(ID,server_ID,位置情報)
+				ActionID = MAKE_PLAYER;
+				in = 0;
+				memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
+				memcpy_s(str + in, sizeof(int), &i, sizeof(int)); in += sizeof(int);
+				memcpy_s(str + in, sizeof(Point), &(*p).data[i].pos, sizeof(Point)); 
+				
+				//データ送信
+				NetWorkSend(GetHandle, str, sizeof(str));
+			}
+		}
 
 		//手続き完了を送信
 		ActionID = CONNECTION_SEND_COMPLETION;
@@ -97,6 +98,12 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 			//サーバー情報を更新
 			memcpy_s(&(*p).data[ID].pos, sizeof(Point), str + in, sizeof(Point));
 
+			//サーバー側で弾の情報を更新
+			if (&(*p).data[ID].barst)
+			{
+				//弾生成
+			}
+
 			//自分以外のプレイヤーに情報を送信
 			for (int i = 0; i < MAX_CONNECTION; i++) {
 				if (i != ID && (*p).NetHandle[i] != -1) {
@@ -105,7 +112,8 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 					in = 0;
 					memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 					memcpy_s(str + in, sizeof(int), &ID, sizeof(int)); in += sizeof(int);
-					memcpy_s(str + in, sizeof(Point), &(*p).data[ID].pos, sizeof(Point));
+					memcpy_s(str + in, sizeof(Point), &(*p).data[ID].pos, sizeof(Point)); in += sizeof(Point);
+					
 					//データ送信
 					NetWorkSend((*p).NetHandle[i], str, sizeof(str));
 				}
