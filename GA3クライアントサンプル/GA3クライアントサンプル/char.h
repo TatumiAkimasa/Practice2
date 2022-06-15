@@ -1,5 +1,6 @@
 #pragma once
 #include "main.h"
+#include"Hit.h"
 
 //プレイヤークラス(クライアント）
 class Player :public Base {
@@ -56,4 +57,20 @@ public:
 	void Draw();
 
 	~AnyPlayer() { DeleteGraph(img); };
+};
+
+class Bulett :public Base
+{
+private:
+public:
+
+	//位置
+	Point pos{ 0,0 };
+	//移動ベクトル
+	Vector vec{ 0,0 };
+	Bulett(int B_ID, float _x, float _y);
+
+	int Action(list<unique_ptr<Base>>& base);
+
+	void Draw();
 };

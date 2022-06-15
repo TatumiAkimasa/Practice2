@@ -153,12 +153,15 @@
   <ItemGroup>
     <ClInclude Include="char.h" />
     <ClInclude Include="client.h" />
+    <ClInclude Include="Hit.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="thread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="any_player.cpp" />
+    <ClCompile Include="Bulett.cpp" />
+    <ClCompile Include="Hit.cpp" />
     <ClCompile Include="ip_set.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
