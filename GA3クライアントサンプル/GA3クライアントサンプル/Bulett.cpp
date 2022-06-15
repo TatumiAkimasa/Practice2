@@ -7,9 +7,8 @@
 constexpr auto BulettSpeedX = 6.0f;
 constexpr auto BulettSpeedY = 6.0f;
 
-char str[512]{ "null" };
-int in{ 0 };//データの読み取り、書き込み位置調整用
-int ActionID{ 0 };//アクションID
+//char str[512]{ "null" };
+
 
 Bulett::Bulett(int B_ID, float _x, float _y,float x,float y){
 	img = LoadGraph("image\\Bulett.png");

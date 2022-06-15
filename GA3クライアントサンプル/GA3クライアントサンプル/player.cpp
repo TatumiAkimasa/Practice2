@@ -28,6 +28,9 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_DOWN)) vec.y = PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
 
+	//ZÇ≈íeåƒÇ—èoÇ∑
+	//if (CheckHitKey(KEY_INPUT_Z))base.emplace_back((unique_ptr<Base>)new BULETT(pos, BULETT);
+
 	pos.x += vec.x;
 	pos.y += vec.y;
 
