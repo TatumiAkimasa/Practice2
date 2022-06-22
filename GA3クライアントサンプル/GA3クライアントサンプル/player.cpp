@@ -64,6 +64,11 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
 
 		}
+		else
+		{
+			//‚­‚»‚ª
+			memcpy_s(str + in, sizeof(bool), false, sizeof(bool));
+		}
 	}
 	else
 	{
@@ -95,7 +100,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		NetWorkSend(NetHandle, str, sizeof(str));
 	}
 
-	i
+	
 	return 0;
 }
 
