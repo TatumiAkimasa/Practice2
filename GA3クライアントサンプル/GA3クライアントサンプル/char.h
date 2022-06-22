@@ -31,7 +31,7 @@ public:
 	//弾のベクトル
 	Vector BulletVec{ 0,0 };
 	//敵の位置と二転換距離
-	PosAndDistance EnemyPosInfo;
+	PosAndDistance EnemyPosInfo{ 0,{0,0} };
 
 	//ヒットポイント
 	int HP{ 5 };

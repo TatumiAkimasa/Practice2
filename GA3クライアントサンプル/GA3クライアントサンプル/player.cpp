@@ -77,7 +77,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
 
 		//ˆÊ’u
-		memcpy_s(str + in, sizeof(Vector), &a, sizeof(Vector)); in += sizeof(Vector);
+		memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
 		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
 
