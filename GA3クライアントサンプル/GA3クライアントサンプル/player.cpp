@@ -79,6 +79,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		//位置
 		memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
+		if(isShot && !CheckHitKey(KEY_INPUT_Z))
 		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
 
 		//サーバーに送信
