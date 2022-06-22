@@ -6,6 +6,7 @@ int AnyPlayer::Action(list<unique_ptr<Base>>& base, int NetHandle)
 {
 	if (isShot)
 	{
+		
 		if (!AnyisShot)
 		{
 			base.emplace_back((unique_ptr<Base>)new Bullet(vec.x, vec.y, pos.x, pos.y));

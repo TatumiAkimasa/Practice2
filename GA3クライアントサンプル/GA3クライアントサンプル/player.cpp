@@ -57,8 +57,43 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			base.emplace_back((unique_ptr<Base>)new Bullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
 			isShot = true;
 
+			in = 0;//読み取り位置初期化
+			ActionID = PLAYER_UPDATE;
+
+			//送信データの作成
+			//行動ID
+			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int));		in += sizeof(int);
 			
+			in += sizeof(Point);
+
+			in += sizeof(Vector);
+
+			memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
+
+
+			//サーバーに送信
+			NetWorkSend(NetHandle, str, sizeof(str));
 			
+
+		}
+		else
+		{
+			bool a = false;
+			in = 0;//読み取り位置初期化
+			ActionID = PLAYER_UPDATE;
+
+			//送信データの作成
+			//行動ID
+			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
+			in += sizeof(Point);
+
+			in += sizeof(Vector);
+
+			memcpy_s(str + in, sizeof(bool), &a, sizeof(bool));
+
+
+			//サーバーに送信
+			NetWorkSend(NetHandle, str, sizeof(str));
 
 		}
 		
@@ -73,7 +108,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	pos.y += vec.y;
 
 	//移動した場合、位置の更新情報を送信
-	if (vec.x != 0 || vec.y != 0||isShot==true) {
+	if (vec.x != 0 || vec.y != 0) {
 		in = 0;//読み取り位置初期化
 		ActionID = PLAYER_UPDATE;
 
