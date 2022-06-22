@@ -27,19 +27,14 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_RIGHT)) vec.x = PlayerSpeedX;
 	if (CheckHitKey(KEY_INPUT_DOWN)) vec.y = PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (CheckHitKey(KEY_INPUT_Z) == true)
 	{
-		if (!isShot)
-		{
-			isShot = true;
-			// 弾生成
-			base.emplace_back((unique_ptr<Base>)new Bullet(1.0f,1.0f,pos.x,pos.y));
-		}
+		base.emplace_back((unique_ptr<Base>)new Bulett(3.0f, 3.0f, pos.x, pos.y));
+		isShot = true;
 	}
-	else if (isShot)
-	{
+	else
 		isShot = false;
-	}
+	
 
 
 	//Zで弾呼び出す
@@ -49,7 +44,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	pos.y += vec.y;
 
 	//移動した場合、位置の更新情報を送信
-	if (vec.x != 0 || vec.y != 0) {
+	if (vec.x != 0 || vec.y != 0||isShot==true) {
 		in = 0;//読み取り位置初期化
 		ActionID = PLAYER_UPDATE;
 
@@ -57,7 +52,14 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		//行動ID
 		memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 		//位置
-		memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point));
+		memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
+
+		Vector a = { 3.0f,3.0f };
+
+		//位置
+		memcpy_s(str + in, sizeof(Vector), &a, sizeof(Vector)); in += sizeof(Vector);
+
+		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
 
 		//サーバーに送信
 		NetWorkSend(NetHandle, str, sizeof(str));
@@ -70,6 +72,7 @@ void Player::Draw()
 {
 	DrawGraphF(pos.x, pos.y, img, TRUE);
 	DrawFormatStringF(pos.x, pos.y+64, GetColor(255, 255, 255), "ID=%d", server_ID);
+	DrawFormatStringF(pos.x, pos.y , GetColor(255, 255, 255), "HP=%d", HP);
 }
 
 // ベクトルの正規化
