@@ -29,38 +29,38 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_Z) == true)		//ここで弾を発射
 	{
-		for (auto i = base.begin(); i != base.end(); i++)
-		{
-			if ((*i)->objID == ANYPLAYER)
-			{
-				PosAndDistance info=
-				{
-					Distance2Pos(pos, ((AnyPlayer*)(*i).get())->GetPoint()),
-					((AnyPlayer*)(*i).get())->GetPoint()
-				};
-				
-				if (info.distance < EnemyPosInfo.distance || EnemyPosInfo.distance == 0);
-				{
-					EnemyPosInfo = info;
-				}
-			}
-		}
-
-		float l = sqrtf((EnemyPosInfo.pos.x - pos.x) * (EnemyPosInfo.pos.x - pos.x) + (EnemyPosInfo.pos.y - pos.y));
-		BulletVec.x = (EnemyPosInfo.pos.x - pos.x) / l * 3.0f;
-		BulletVec.y = (EnemyPosInfo.pos.y - pos.y) / l * 3.0f;
-
-
 		if (!isShot)
 		{
+			for (auto i = base.begin(); i != base.end(); i++)
+			{
+				if ((*i)->objID == ANYPLAYER)
+				{
+					PosAndDistance info=
+					{
+						Distance2Pos(pos, ((AnyPlayer*)(*i).get())->GetPoint()),
+						((AnyPlayer*)(*i).get())->GetPoint()
+					};
+					
+					if (info.distance < EnemyPosInfo.distance || EnemyPosInfo.distance == 0);
+					{
+						EnemyPosInfo = info;
+					}
+				}
+			}
+
+			float l = sqrtf((EnemyPosInfo.pos.x - pos.x) * (EnemyPosInfo.pos.x - pos.x) + (EnemyPosInfo.pos.y - pos.y));
+			BulletVec.x = (EnemyPosInfo.pos.x - pos.x) / l * 3.0f;
+			BulletVec.y = (EnemyPosInfo.pos.y - pos.y) / l * 3.0f;
+
+
+		
 			base.emplace_back((unique_ptr<Base>)new Bullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
 			isShot = true;
+
+
 		}
 	}
-	else
-	{
-		isShot = false;
-	}
+	
 
 	pos.x += vec.x;
 	pos.y += vec.y;
@@ -83,6 +83,11 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 
 		//サーバーに送信
 		NetWorkSend(NetHandle, str, sizeof(str));
+	}
+
+	if (!CheckHitKey(KEY_INPUT_Z))
+	{
+		isShot = false;
 	}
 
 	return 0;
