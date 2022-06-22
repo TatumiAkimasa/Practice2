@@ -40,6 +40,7 @@ public:
 
 	bool FLAG{ true };//‘¶İƒtƒ‰ƒO
 
+
 	//ˆ—
 	virtual int Action(list<unique_ptr<Base>>& base,int NetHandle) = 0;
 	

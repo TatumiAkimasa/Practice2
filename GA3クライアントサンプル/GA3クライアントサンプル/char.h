@@ -5,9 +5,19 @@
 //プレイヤークラス(クライアント）
 class Player :public Base {
 private:
+	//座標と二転換距離の情報
+	struct PosAndDistance
+	{
+		float distance;
+		Point pos;
+	};
 public:
 	//コンストラクタ
 	Player(int S_ID);
+
+
+	Point GetPoint() { return pos; };
+	Vector GetVector() { return vec; };
 
 	//ボタン情報
 	int Button[8]{ 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -16,6 +26,10 @@ public:
 	Point pos{ 0,0 };
 	//移動ベクトル
 	Vector vec{ 0,0 };
+	//弾のベクトル
+	Vector BulletVec{ 0,0 };
+	//敵の位置と二転換距離
+	PosAndDistance EnemyPosInfo;
 
 	//ヒットポイント
 	int HP{ 5 };
@@ -34,6 +48,11 @@ public:
 class AnyPlayer :public Player {
 private:
 public:
+
+	Point GetPoint() { return pos; };
+	Vector GetVector() { return vec; };
+
+
 	AnyPlayer(int S_ID) : Player(S_ID) 
 	{
 		img = LoadGraph("image\\any_player.png");
@@ -73,6 +92,8 @@ public:
 	Point pos{ 0,0 };
 	//移動ベクトル
 	Vector vec{ 0,0 };
+
+
 	Bullet(float _x, float _y,float x,float y);
 
 	int Action(list<unique_ptr<Base>>& base,int NetHandle);

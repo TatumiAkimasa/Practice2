@@ -162,7 +162,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 							memcpy_s(&player_server_ID, sizeof(int), str + in, sizeof(int)); in += sizeof(int);
 							memcpy_s(&pos, sizeof(Point), str + in, sizeof(Point));   in += sizeof(Point);
 							memcpy_s(&vec, sizeof(Vector), str + in, sizeof(Vector)); in += sizeof(Vector);
-							memcpy_s(&isShot, sizeof(bool), str + in, sizeof(bool));  in += sizeof(bool);
+							memcpy_s(&isShot, sizeof(bool), str + in, sizeof(bool));
 							
 							//リストのIDが同じデータを更新
 							for (auto i = base.begin(); i != base.end(); i++) {
