@@ -27,18 +27,18 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_RIGHT)) vec.x = PlayerSpeedX;
 	if (CheckHitKey(KEY_INPUT_DOWN)) vec.y = PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
-	if (CheckHitKey(KEY_INPUT_Z) == true)
+	if (CheckHitKey(KEY_INPUT_Z) == true)		//Ç±Ç±Ç≈íeÇî≠éÀ
 	{
-		base.emplace_back((unique_ptr<Base>)new Bullet(3.0f, 3.0f, pos.x, pos.y));
-		isShot = true;
+		if (!isShot)
+		{
+			base.emplace_back((unique_ptr<Base>)new Bullet(3.0f, 3.0f, pos.x, pos.y));
+			isShot = true;
+		}
 	}
 	else
+	{
 		isShot = false;
-	
-
-
-	//ZÇ≈íeåƒÇ—èoÇ∑
-	//if (CheckHitKey(KEY_INPUT_Z))base.emplace_back((unique_ptr<Base>)new BULETT(pos, BULETT);
+	}
 
 	pos.x += vec.x;
 	pos.y += vec.y;

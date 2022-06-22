@@ -156,22 +156,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 							//他のプレイヤーの情報がアップデートされた場合
 						case PLAYER_UPDATE:
 							Point pos{ 0,0 };
-							Vector vec{ 0,0 };
-							bool flg;
+							Vector vec{ 0.0f,0.0f };
+							bool isShot{ false };
 							//該当するID情報を更新
 							memcpy_s(&player_server_ID, sizeof(int), str + in, sizeof(int)); in += sizeof(int);
-							memcpy_s(&pos, sizeof(Point), str + in, sizeof(Point)); in += sizeof(Point);
+							memcpy_s(&pos, sizeof(Point), str + in, sizeof(Point));   in += sizeof(Point);
 							memcpy_s(&vec, sizeof(Vector), str + in, sizeof(Vector)); in += sizeof(Vector);
-							memcpy_s(&flg, sizeof(bool), str + in, sizeof(bool)); 
-
-							if (flg == true)
-							{
-								base.emplace_back((unique_ptr<Base>)new Bullet(vec.x,vec.y,pos.x,pos.y));
-							}
+							memcpy_s(&isShot, sizeof(bool), str + in, sizeof(bool));  in += sizeof(bool);
+							
 							//リストのIDが同じデータを更新
 							for (auto i = base.begin(); i != base.end(); i++) {
 								if ((*i)->server_ID == player_server_ID) {
-									((AnyPlayer*)(*i).get())->pos = pos;
+									((AnyPlayer*)(*i).get())->pos	 = pos;
+									((AnyPlayer*)(*i).get())->vec	 = vec;
+									((AnyPlayer*)(*i).get())->isShot = isShot;
 								}
 							}
 							break;
