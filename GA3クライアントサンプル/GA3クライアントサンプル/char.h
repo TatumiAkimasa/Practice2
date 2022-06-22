@@ -18,6 +18,8 @@ public:
 
 	Point GetPoint() { return pos; };
 	Vector GetVector() { return vec; };
+	float Distance2Pos(Point myPos, Point yourPos);
+	Vector VecNormalize(Vector vec);
 
 	//ƒ{ƒ^ƒ“î•ñ
 	int Button[8]{ 0, 0, 0, 0, 0, 0, 0, 0 };

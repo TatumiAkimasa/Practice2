@@ -99,7 +99,7 @@ void Player::Draw()
 }
 
 // ベクトルの正規化
-Vector VecNormalize(Vector vec)
+Vector Player::VecNormalize(Vector vec)
 {
 	vec.x = vec.x / (vec.x * vec.x + vec.y * vec.y);
 	vec.y = vec.y / (vec.x * vec.x + vec.y * vec.y);
@@ -112,7 +112,7 @@ Vector VecNormalize(Vector vec)
 //引数1  -> myPos（自身のポジション）
 //引数2  -> yourPos（相手とか、比較したいオブジェクトのポジション）
 //内容   -> 主人公と弾の二点間距離を計算し、その値を返す
-float Distance2Pos(Point myPos, Point yourPos)
+float Player::Distance2Pos(Point myPos, Point yourPos)
 {
 	float m_d;
 	//三平方の定理で主人公との二点間距離を計算
