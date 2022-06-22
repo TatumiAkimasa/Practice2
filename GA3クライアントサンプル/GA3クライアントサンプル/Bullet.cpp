@@ -61,15 +61,15 @@ int Bullet::Action(list<unique_ptr<Base>>& base,int a)
 	{
 		FLAG = false;
 	}
-	else if (0.0f > pos.x - 10.0f)
+	else if (-20.0f > pos.x - 10.0f)
 	{
 		FLAG = false;
 	}
-	else if (WINDOW_HEIGHT > pos.y + 10.0f)
+	else if (WINDOW_HEIGHT < pos.y + 10.0f)
 	{
 		FLAG = false;
 	}
-	else if (0.0f > pos.y - 10.0f)
+	else if (-20.0f > pos.y - 10.0f)
 	{
 		FLAG = false;
 	}
