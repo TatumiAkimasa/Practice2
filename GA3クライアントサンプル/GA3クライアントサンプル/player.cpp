@@ -39,7 +39,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 					((AnyPlayer*)(*i).get())->GetPoint()
 				};
 				
-				if (info.distance < EnemyPosInfo.distance)
+				if (info.distance < EnemyPosInfo.distance || EnemyPosInfo.distance == 0);
 				{
 					EnemyPosInfo = info;
 				}
