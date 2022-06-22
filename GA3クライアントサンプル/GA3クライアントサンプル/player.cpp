@@ -57,19 +57,11 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			base.emplace_back((unique_ptr<Base>)new Bullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
 			isShot = true;
 
-			in = 0;//読み取り位置初期化
-			in += sizeof(int);
-			in += sizeof(Point);
-			in += sizeof(Vector);
-			memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
+			
+			
 
 		}
-		else
-		{
-			bool a=false;
-			//くそが
-			memcpy_s(str + in, sizeof(bool), &a, sizeof(bool));
-		}
+		
 	}
 	else
 	{
@@ -94,7 +86,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		//位置
 		memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
-		
+		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
 		
 
 		//サーバーに送信

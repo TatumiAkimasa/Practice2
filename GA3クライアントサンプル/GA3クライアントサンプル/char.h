@@ -75,6 +75,7 @@ public:
 
 		objID = ANYPLAYER;
 	}
+	bool AnyisShot;
 
 	int Action(list<unique_ptr<Base>>& base, int NetHandle);
 	void Draw();
