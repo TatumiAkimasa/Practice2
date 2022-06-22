@@ -160,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="any_player.cpp" />
-    <ClCompile Include="Bulett.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Hit.cpp" />
     <ClCompile Include="ip_set.cpp" />
     <ClCompile Include="main.cpp" />

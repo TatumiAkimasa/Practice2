@@ -61,7 +61,7 @@ public:
 	~AnyPlayer() { DeleteGraph(img); };
 };
 
-class Bulett :public Base
+class Bullet :public Base
 {
 private:
 public:
@@ -73,7 +73,7 @@ public:
 	Point pos{ 0,0 };
 	//ˆÚ“®ƒxƒNƒgƒ‹
 	Vector vec{ 0,0 };
-	Bulett(float _x, float _y,float x,float y);
+	Bullet(float _x, float _y,float x,float y);
 
 	int Action(list<unique_ptr<Base>>& base,int NetHandle);
 
