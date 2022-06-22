@@ -29,9 +29,32 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_Z) == true)		//ここで弾を発射
 	{
+		for (auto i = base.begin(); i != base.end(); i++)
+		{
+			if ((*i)->objID == ANYPLAYER)
+			{
+				PosAndDistance info=
+				{
+					Distance2Pos(pos, ((AnyPlayer*)(*i).get())->GetPoint()),
+					((AnyPlayer*)(*i).get())->GetPoint()
+				};
+				
+				if (info.distance < EnemyPosInfo.distance)
+				{
+					EnemyPosInfo = info;
+				}
+			}
+		}
+
+		Vector v{ 0,0 };
+		float l = sqrtf((EnemyPosInfo.pos.x - pos.x) * (EnemyPosInfo.pos.x - pos.x) + (EnemyPosInfo.pos.y - pos.y));
+		v.x = (EnemyPosInfo.pos.x - pos.x) / l * 3.0f;
+		v.y = (EnemyPosInfo.pos.y - pos.y) / l * 3.0f;
+
+
 		if (!isShot)
 		{
-			base.emplace_back((unique_ptr<Base>)new Bullet(3.0f, 3.0f, pos.x, pos.y));
+			base.emplace_back((unique_ptr<Base>)new Bullet(v.x, v.y, pos.x, pos.y));
 			isShot = true;
 		}
 	}
@@ -82,4 +105,19 @@ Vector VecNormalize(Vector vec)
 	vec.y = vec.y / (vec.x * vec.x + vec.y * vec.y);
 
 	return vec;
+}
+
+
+//float BHnear関数
+//引数1  -> myPos（自身のポジション）
+//引数2  -> yourPos（相手とか、比較したいオブジェクトのポジション）
+//内容   -> 主人公と弾の二点間距離を計算し、その値を返す
+float Distance2Pos(Point myPos, Point yourPos)
+{
+	float m_d;
+	//三平方の定理で主人公との二点間距離を計算
+	m_d = (yourPos.x - myPos.x) * (yourPos.x - myPos.x) + (yourPos.y - myPos.y) * (yourPos.y - myPos.y);
+	m_d = sqrt(m_d);
+
+	return m_d;
 }
