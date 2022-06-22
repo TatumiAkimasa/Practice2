@@ -29,7 +29,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	if (CheckHitKey(KEY_INPUT_UP)) vec.y = -PlayerSpeedY;
 	if (CheckHitKey(KEY_INPUT_Z) == true)
 	{
-		base.emplace_back((unique_ptr<Base>)new Bulett(3.0f, 3.0f, pos.x, pos.y));
+		base.emplace_back((unique_ptr<Base>)new Bullet(3.0f, 3.0f, pos.x, pos.y));
 		isShot = true;
 	}
 	else
