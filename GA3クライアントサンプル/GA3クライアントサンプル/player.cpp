@@ -46,15 +46,14 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			}
 		}
 
-		Vector v{ 0,0 };
 		float l = sqrtf((EnemyPosInfo.pos.x - pos.x) * (EnemyPosInfo.pos.x - pos.x) + (EnemyPosInfo.pos.y - pos.y));
-		v.x = (EnemyPosInfo.pos.x - pos.x) / l * 3.0f;
-		v.y = (EnemyPosInfo.pos.y - pos.y) / l * 3.0f;
+		BulletVec.x = (EnemyPosInfo.pos.x - pos.x) / l * 3.0f;
+		BulletVec.y = (EnemyPosInfo.pos.y - pos.y) / l * 3.0f;
 
 
 		if (!isShot)
 		{
-			base.emplace_back((unique_ptr<Base>)new Bullet(v.x, v.y, pos.x, pos.y));
+			base.emplace_back((unique_ptr<Base>)new Bullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
 			isShot = true;
 		}
 	}
@@ -76,8 +75,6 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 		//ˆÊ’u
 		memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
-
-		Vector a = { 3.0f,3.0f };
 
 		//ˆÊ’u
 		memcpy_s(str + in, sizeof(Vector), &a, sizeof(Vector)); in += sizeof(Vector);
