@@ -71,6 +71,7 @@ void Player::Draw()
 {
 	DrawGraphF(pos.x, pos.y, img, TRUE);
 	DrawFormatStringF(pos.x, pos.y+64, GetColor(255, 255, 255), "ID=%d", server_ID);
+	DrawFormatStringF(pos.x, pos.y , GetColor(255, 255, 255), "HP=%d", HP);
 }
 
 // ÉxÉNÉgÉãÇÃê≥ãKâª
