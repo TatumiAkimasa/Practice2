@@ -66,8 +66,9 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		}
 		else
 		{
+			bool a=false;
 			//‚­‚»‚ª
-			memcpy_s(str + in, sizeof(bool), false, sizeof(bool));
+			memcpy_s(str + in, sizeof(bool), &a, sizeof(bool));
 		}
 	}
 	else
