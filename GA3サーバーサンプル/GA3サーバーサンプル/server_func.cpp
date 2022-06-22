@@ -96,12 +96,15 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 		switch (ActionID) {
 		case PLAYER_UPDATE:
 			//サーバー情報を更新
-			memcpy_s(&(*p).data[ID].pos, sizeof(Point), str + in, sizeof(Point));
+			memcpy_s(&(*p).data[ID].pos, sizeof(Point), str + in, sizeof(Point)); in += sizeof(Point);
 
-			//サーバー側で弾の情報を更新
-			if (&(*p).data[ID].barst)
+			//サーバー側で弾の情報を更新(trueなら取得)
+			if (&(*p).data[ID].isShot)
 			{
 				//弾生成
+				memcpy_s(&(*p).data[ID].Bulletvec, sizeof(Vector), str + in, sizeof(Vector)); in += sizeof(Vector);
+				memcpy_s(&(*p).data[ID].isShot, sizeof(bool), str + in, sizeof(bool));
+				//ID識別なし
 			}
 
 			//自分以外のプレイヤーに情報を送信
@@ -113,7 +116,13 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 					memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 					memcpy_s(str + in, sizeof(int), &ID, sizeof(int)); in += sizeof(int);
 					memcpy_s(str + in, sizeof(Point), &(*p).data[ID].pos, sizeof(Point)); in += sizeof(Point);
-					
+					if (&(*p).data[ID].isShot)
+					{
+						//弾のVec情報、フラグ状況を送信。
+						memcpy_s(str + in, sizeof(Vector), &(*p).data[ID].Bulletvec, sizeof(Vector)); in += sizeof(Vector);
+						memcpy_s(str + in, sizeof(bool), &(*p).data[ID].isShot, sizeof(bool)); in += sizeof(bool);
+					}
+
 					//データ送信
 					NetWorkSend((*p).NetHandle[i], str, sizeof(str));
 				}
