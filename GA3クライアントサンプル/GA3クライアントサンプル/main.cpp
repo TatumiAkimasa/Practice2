@@ -168,8 +168,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 							for (auto i = base.begin(); i != base.end(); i++) {
 								if ((*i)->server_ID == player_server_ID) {
 									((AnyPlayer*)(*i).get())->pos	 = pos;
-									((AnyPlayer*)(*i).get())->vec	 = vec;
-									((AnyPlayer*)(*i).get())->isShot = isShot;
+									
+									if (isShot)
+									{
+										base.emplace_back((unique_ptr<Base>)new Bullet(vec.x, vec.y, pos.x, pos.y));
+									}
 								}
 							}
 							break;

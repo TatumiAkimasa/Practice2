@@ -49,6 +49,7 @@ public:
 
 class AnyPlayer :public Player {
 private:
+	bool AnyisShot = false;
 public:
 
 	Point GetPoint() { return pos; };
@@ -75,12 +76,17 @@ public:
 
 		objID = ANYPLAYER;
 	}
-	bool AnyisShot=false;
+	
 
 	int Action(list<unique_ptr<Base>>& base, int NetHandle);
 	void Draw();
 
 	~AnyPlayer() { DeleteGraph(img); };
+
+	void AnyShot(bool a)
+	{
+		isShot = a;
+	}
 };
 
 class Bullet :public Base
