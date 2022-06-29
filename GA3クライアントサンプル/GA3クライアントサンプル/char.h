@@ -37,6 +37,7 @@ public:
 	int HP{ 5 };
 
 	bool isShot = false;
+	bool isHit = false;
 
 	//ˆ—
 	int Action(list<unique_ptr<Base>>& base,int NetHandle);
