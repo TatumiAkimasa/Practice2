@@ -54,7 +54,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 
 
 		
-			base.emplace_back((unique_ptr<Base>)new Bullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
+			base.emplace_back((unique_ptr<Base>)new PLBullet(BulletVec.x, BulletVec.y, pos.x, pos.y));
 			isShot = true;
 
 			in = 0;//“Ç‚İæ‚èˆÊ’u‰Šú‰»
