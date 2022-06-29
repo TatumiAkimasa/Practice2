@@ -31,30 +31,24 @@ int Bullet::Action(list<unique_ptr<Base>>& base,int a)
 
 	ActionID = PLAYER_UPDATE;
 	
-	bool hitANYPL = false;
+
 
 	//オブジェクトの処理
 	for (auto i = base.begin(); i != base.end(); i++) {
 		
-		if ((*i)->objID == ANYPLAYER)
+		if ((*i)->objID == PLAYER)
 		{
-			Point anypst = ((AnyPlayer*)(*i).get())->pos;
+			Point anypst = ((Player*)(*i).get())->pos;
 
-			if (DistanceS(pos.x, pos.y, pos.x + 10.0f, pos.y - 10.0f, anypst.x, anypst.y, anypst.x + 10.0f, anypst.y - 10.0f))
+			if (DistanceS(pos.x, pos.y, pos.x + 64.0f, pos.y + 64.0f, anypst.x, anypst.y, anypst.x + 64.0f, anypst.y + 64.0f))
 			{
-				hitANYPL = true;
+				((Player*)(*i).get())->HP--;
+				FLAG = false;
 			}
 		}
 
 	}
-	for (auto i = base.begin(); i != base.end(); i++) {
-
-		if ((*i)->objID == PLAYER)
-		{
-			((AnyPlayer*)(*i).get())->HP--;
-		}
-
-	}
+	
 
 	//領域外に行ったら消す
 	if (WINDOW_WIDTH < pos.x + 10.0f)
