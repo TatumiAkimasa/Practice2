@@ -4,7 +4,10 @@
 
 int AnyPlayer::Action(list<unique_ptr<Base>>& base, int NetHandle)
 {
-	
+	if (HPany <= 0)
+	{
+		FLAG = false;
+	}
 
 	return 0;
 }
