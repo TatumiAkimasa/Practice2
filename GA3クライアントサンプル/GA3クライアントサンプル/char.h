@@ -87,6 +87,9 @@ public:
 	{
 		isShot = a;
 	}
+
+	//ヒットポイント
+	int HPany{ 5 };
 };
 
 class Bullet :public Base

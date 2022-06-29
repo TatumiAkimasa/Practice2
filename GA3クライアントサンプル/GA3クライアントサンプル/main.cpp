@@ -156,11 +156,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 							//他のプレイヤーの情報がアップデートされた場合
 						case PLAYER_UPDATE:
 							Point pos{ 0,0 };
+							int hp{ 0 };
 							Vector vec{ 0.0f,0.0f };
 							bool isShot{ false };
 							//該当するID情報を更新
 							memcpy_s(&player_server_ID, sizeof(int), str + in, sizeof(int)); in += sizeof(int);
 							memcpy_s(&pos, sizeof(Point), str + in, sizeof(Point));   in += sizeof(Point);
+							memcpy_s(&hp, sizeof(int), str + in, sizeof(int));   in += sizeof(int);
 							memcpy_s(&vec, sizeof(Vector), str + in, sizeof(Vector)); in += sizeof(Vector);
 							memcpy_s(&isShot, sizeof(bool), str + in, sizeof(bool));
 							
@@ -168,6 +170,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 							for (auto i = base.begin(); i != base.end(); i++) {
 								if ((*i)->server_ID == player_server_ID) {
 									((AnyPlayer*)(*i).get())->pos	 = pos;
+									((AnyPlayer*)(*i).get())->HPany = hp;
 									
 									if (isShot)
 									{
