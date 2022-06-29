@@ -117,7 +117,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 
 	if (HP <= 0)
 	{
-		base.clear();
+		FLAG = false;
 	}
 
 	pos.x += vec.x;
