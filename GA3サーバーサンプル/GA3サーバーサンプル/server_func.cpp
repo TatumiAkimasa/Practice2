@@ -97,6 +97,7 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 		case PLAYER_UPDATE:
 			//サーバー情報を更新
 			memcpy_s(&(*p).data[ID].pos, sizeof(Point), str + in, sizeof(Point)); in += sizeof(Point);
+			memcpy_s(&(*p).data[ID].HP, sizeof(int), str + in, sizeof(int)); in += sizeof(int);
 
 			//サーバー側で弾の情報を更新(trueなら取得)
 			if (&(*p).data[ID].isShot)
@@ -116,6 +117,7 @@ int Connection_Process(list<unique_ptr<Base>>& base, int ID, Player_Data* p, int
 					memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 					memcpy_s(str + in, sizeof(int), &ID, sizeof(int)); in += sizeof(int);
 					memcpy_s(str + in, sizeof(Point), &(*p).data[ID].pos, sizeof(Point)); in += sizeof(Point);
+					memcpy_s(str + in, sizeof(int), &(*p).data[ID].HP, sizeof(int)); in += sizeof(int);
 					if (&(*p).data[ID].isShot)
 					{
 						//弾のVec情報、フラグ状況を送信。
