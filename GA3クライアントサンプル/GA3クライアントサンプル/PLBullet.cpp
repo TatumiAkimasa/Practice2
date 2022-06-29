@@ -70,7 +70,7 @@ int PLBullet::Action(list<unique_ptr<Base>>& base, int a)
 	return 0;
 }
 
-void Bullet::Draw()
+void PLBullet::Draw()
 {
 	DrawGraphF(pos.x, pos.y, img, TRUE);
 
