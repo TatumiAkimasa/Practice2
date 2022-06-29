@@ -197,14 +197,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		//接続状態の描画
 		for (int i = 0; i < MAX_CONNECTION; i++) {
 //			if (p.FLG[i] != -1) {
-				DrawFormatString(0, 32 + (i * 36), GetColor(255, 255, 255),
-					"ID=%d:位置(%.0lf,%.0lf)フラグ状況:%d弾のVec(%.0lf,%.0lf)",
-					i,
-					p.data[i].pos.x,
-					p.data[i].pos.y,
-					p.data[i].isShot,
-					p.data[i].Bulletvec.x,
-					p.data[i].Bulletvec.y
+			DrawFormatString(0, 32 + (i * 36), GetColor(255, 255, 255),
+				"ID=%d:位置(%.0lf,%.0lf)フラグ状況:%d弾のVec(%.0lf,%.0lf):HP:%d",
+				i,
+				p.data[i].pos.x,
+				p.data[i].pos.y,
+				p.data[i].isShot,
+				p.data[i].Bulletvec.x,
+				p.data[i].Bulletvec.y,
+				p.data[i].HP
 				);
 //			}
 		}

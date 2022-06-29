@@ -10,11 +10,11 @@ constexpr auto BulettSpeedY = 6.0f;
 //char str[512]{ "null" };
 
 
-Bullet::Bullet(float _x, float _y,float x,float y){
+PLBullet::PLBullet(float _x, float _y, float x, float y) {
 	img = LoadGraph("image\\Bulett.png");
 
 	server_ID = BULETT;
-	
+
 	vec.x = _x;
 	vec.y = _y;
 
@@ -24,31 +24,30 @@ Bullet::Bullet(float _x, float _y,float x,float y){
 	objID = BULETT;
 }
 
-int Bullet::Action(list<unique_ptr<Base>>& base,int a)
+int PLBullet::Action(list<unique_ptr<Base>>& base, int a)
 {
 	pos.x += vec.x;
 	pos.y += vec.y;
 
 	ActionID = PLAYER_UPDATE;
-	
+
 
 
 	//オブジェクトの処理
 	for (auto i = base.begin(); i != base.end(); i++) {
-		
-		if ((*i)->objID == PLAYER)
+
+		if ((*i)->objID == ANYPLAYER)
 		{
-			Point anypst = ((Player*)(*i).get())->pos;
+			Point anypst = ((AnyPlayer*)(*i).get())->pos;
 
 			if (DistanceS(pos.x, pos.y, pos.x + 64.0f, pos.y + 64.0f, anypst.x, anypst.y, anypst.x + 64.0f, anypst.y + 64.0f))
 			{
-				((Player*)(*i).get())->HP--;
-				//FLAG = false;
+				FLAG = false;
 			}
 		}
 
 	}
-	
+
 
 	//領域外に行ったら消す
 	if (WINDOW_WIDTH < pos.x + 10.0f)
@@ -71,8 +70,8 @@ int Bullet::Action(list<unique_ptr<Base>>& base,int a)
 	return 0;
 }
 
-void Bullet::Draw()
+void PLBullet::Draw()
 {
 	DrawGraphF(pos.x, pos.y, img, TRUE);
-	
+
 }
