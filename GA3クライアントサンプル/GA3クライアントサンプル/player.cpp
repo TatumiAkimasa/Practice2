@@ -128,6 +128,8 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		in = 0;//読み取り位置初期化
 		ActionID = PLAYER_UPDATE;
 
+		bool selestialData = false;
+
 		if (isHit)
 		{
 			isHit = false;
@@ -145,7 +147,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		//弾の
 		memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
-		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
+		memcpy_s(str + in, sizeof(bool), &selestialData, sizeof(bool));
 		
 
 		//サーバーに送信
