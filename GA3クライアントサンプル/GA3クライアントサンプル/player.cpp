@@ -62,11 +62,14 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 
 			//送信データの作成
 			//行動ID
-			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int));		in += sizeof(int);
+			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int));in += sizeof(int);
 			
 			in += sizeof(Point);
 
-			//位置
+			//HP
+			memcpy_s(str + in, sizeof(int), &HP, sizeof(int)); in += sizeof(int);
+
+			//弾vector
 			memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
 			memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
@@ -79,19 +82,26 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		}
 		else
 		{
-			bool a = false;
+			//空データ
+			bool celestialData = false;
 			in = 0;//読み取り位置初期化
 			ActionID = PLAYER_UPDATE;
 
 			//送信データの作成
 			//行動ID
 			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
+			
+			//位置
 			in += sizeof(Point);
 
-			//位置
+			//HP
+			memcpy_s(str + in, sizeof(int), &HP, sizeof(int)); in += sizeof(int);
+
+			//弾vector
 			memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
-			memcpy_s(str + in, sizeof(bool), &a, sizeof(bool));
+			//空データ
+			memcpy_s(str + in, sizeof(bool), &celestialData, sizeof(bool));
 
 
 			//サーバーに送信
@@ -104,15 +114,24 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 	{
 		isShot = false;
 	}
-	
+
+	if (HP <= 0)
+	{
+		base.clear();
+	}
 
 	pos.x += vec.x;
 	pos.y += vec.y;
 
 	//移動した場合、位置の更新情報を送信
-	if (vec.x != 0 || vec.y != 0) {
+	if (vec.x != 0 || vec.y != 0 || isHit) {
 		in = 0;//読み取り位置初期化
 		ActionID = PLAYER_UPDATE;
+
+		if (isHit)
+		{
+			isHit = false;
+		}
 
 		//送信データの作成
 		//行動ID
@@ -120,7 +139,10 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 		//位置
 		memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
 
-		//位置
+		//HP
+		memcpy_s(str + in, sizeof(int), &HP, sizeof(int)); in += sizeof(int);
+
+		//弾の
 		memcpy_s(str + in, sizeof(Vector), &BulletVec, sizeof(Vector)); in += sizeof(Vector);
 
 		memcpy_s(str + in, sizeof(bool), &isShot, sizeof(bool));
