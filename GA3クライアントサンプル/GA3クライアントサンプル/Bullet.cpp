@@ -43,6 +43,7 @@ int Bullet::Action(list<unique_ptr<Base>>& base,int a)
 			if (DistanceS(pos.x, pos.y, pos.x + 64.0f, pos.y + 64.0f, anypst.x, anypst.y, anypst.x + 64.0f, anypst.y + 64.0f))
 			{
 				((Player*)(*i).get())->HP--;
+				((Player*)(*i).get())->isHit = true;
 				FLAG = false;
 			}
 		}
