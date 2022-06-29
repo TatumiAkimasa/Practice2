@@ -11,6 +11,8 @@ constexpr auto BulettSpeedY = 6.0f;
 
 
 Bullet::Bullet(float _x, float _y,float x,float y){
+	int a = 0;
+
 	img = LoadGraph("image\\Bulett.png");
 
 	server_ID = BULETT;
