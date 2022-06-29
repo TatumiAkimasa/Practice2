@@ -64,7 +64,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			//çsìÆID
 			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int));in += sizeof(int);
 			
-			in += sizeof(Point);
+			memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
 
 			//HP
 			memcpy_s(str + in, sizeof(int), &HP, sizeof(int)); in += sizeof(int);
@@ -92,7 +92,7 @@ int Player::Action(list<unique_ptr<Base>>& base,int NetHandle)
 			memcpy_s(str + in, sizeof(int), &ActionID, sizeof(int)); in += sizeof(int);
 			
 			//à íu
-			in += sizeof(Point);
+			memcpy_s(str + in, sizeof(Point), &pos, sizeof(Point)); in += sizeof(Point);
 
 			//HP
 			memcpy_s(str + in, sizeof(int), &HP, sizeof(int)); in += sizeof(int);
